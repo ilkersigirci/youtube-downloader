@@ -5,40 +5,49 @@ configuration:
 # feel free to change it as you see fit. For a detailed explanation
 # of the examples, see https://ytdl-sub.readthedocs.io/en/latest/examples.html
 presets:
-
-  #############################################################################
-  # Downloads single videos and stores them as Kodi/Jellyfin/Emby music videos,
-  # which all live in a single directory.
-  yt_music_video:
-    youtube:
-      download_strategy: "video"
+  yt_video:
+    download:
+      download_strategy: "url"
 
     output_options:
-      output_directory: "{music_video_directory}"
-      file_name: "{music_video_name}.{ext}"
-      thumbnail_name: "{music_video_name}-thumb.jpg"
+      output_directory: "../outputs"
+      # output_directory: "/home/ilker/Documents/MyRepos/youtube-downloader/output_videos"
+      file_name: "{upload_date_standardized}.{title_sanitized}.{ext}"
+      thumbnail_name: "{upload_date_standardized}.{title_sanitized}.{thumbnail_ext}"
 
-    nfo_tags:
-      nfo_name: "{music_video_name}.nfo"
-      nfo_root: "musicvideo"
-      tags:
-        artist: "{artist}"
-        title: "{title}"
-        album: "Music Videos"
-        year: "{upload_year}"
+  # #############################################################################
+  # # Downloads single videos and stores them as Kodi/Jellyfin/Emby music videos,
+  # # which all live in a single directory.
+  # yt_music_video:
+  #   youtube:
+  #     download_strategy: "video"
 
-    overrides:
-      music_video_directory: "/music_videos"
-      music_video_name: "{artist_sanitized} - {title_sanitized}"
-      # artist: # FILL THIS OUT IN THE SUBSCRIPTION
+  #   output_options:
+  #     output_directory: "{music_video_directory}"
+  #     file_name: "{music_video_name}.{ext}"
+  #     thumbnail_name: "{music_video_name}-thumb.jpg"
 
-  #############################################################################
-  # Downloads playlists and stores all videos as Kodi/Jellyfin/Emby music
-  # videos, which all live in a single directory.
-  yt_music_video_playlist:
-    preset: "yt_music_video"
-    youtube:
-      download_strategy: "playlist"
+  #   nfo_tags:
+  #     nfo_name: "{music_video_name}.nfo"
+  #     nfo_root: "musicvideo"
+  #     tags:
+  #       artist: "{artist}"
+  #       title: "{title}"
+  #       album: "Music Videos"
+  #       year: "{upload_year}"
 
-    output_options:
-      maintain_download_archive: True
+  #   overrides:
+  #     music_video_directory: "/music_videos"
+  #     music_video_name: "{artist_sanitized} - {title_sanitized}"
+  #     # artist: # FILL THIS OUT IN THE SUBSCRIPTION
+
+  # #############################################################################
+  # # Downloads playlists and stores all videos as Kodi/Jellyfin/Emby music
+  # # videos, which all live in a single directory.
+  # yt_music_video_playlist:
+  #   preset: "yt_music_video"
+  #   youtube:
+  #     download_strategy: "playlist"
+
+  #   output_options:
+  #     maintain_download_archive: True

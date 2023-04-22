@@ -270,3 +270,6 @@ public
 
 # Scalene related
 profile.*
+
+# Repo related
+outputs
