@@ -18,8 +18,8 @@ curl -sSL https://install.python-poetry.org | python3 -
 
 - Install the project dependencies
 ```bash
-conda create -n python-template python=3.10 -y
-conda activate python-template
+conda create -n youtube-downloader python=3.10 -y
+conda activate youtube-downloader
 make -s install
 ```
 
@@ -30,19 +30,19 @@ make -s install
 
 ```bash
 # Development build (800 MB)
-docker build --tag python-template --file docker/Dockerfile --target development .
+docker build --tag youtube-downloader --file docker/Dockerfile --target development .
 
 # Production build (145 MB)
-docker build --tag python-template --file docker/Dockerfile --target production .
+docker build --tag youtube-downloader --file docker/Dockerfile --target production .
 ```
 
 - To run command inside the container:
 
 ```bash
-docker run --rm -it python-template:latest bash
+docker run --rm -it youtube-downloader:latest bash
 
 # Temporary container
-docker run -it python-template:latest bash
+docker run -it youtube-downloader:latest bash
 ```
 
 # IDE Setings

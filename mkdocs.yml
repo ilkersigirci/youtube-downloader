@@ -1,8 +1,8 @@
-site_name: Python Template
+site_name: Youtube Downloader
 site_dir: public
-site_url: https://github.com/ilkersigirci/python-template
-# repo_url: https://gitlab.com/ilkersigirci/python-template # # For GitLab
-repo_url: https://ilkersigirci.github.io/python-template/ # For GitHub
+site_url: https://github.com/ilkersigirci/youtube-downloader
+# repo_url: https://gitlab.com/ilkersigirci/youtube-downloader # # For GitLab
+repo_url: https://ilkersigirci.github.io/youtube-downloader/ # For GitHub
 # repo_name: GitLab
 repo_name: GitHub
 

@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "python_template"
+name = "youtube_downloader"
 version = "0.0.0"
-description = "Python Template"
+description = "Youtube Downloader"
 readme = "README.md"
 
 authors = [
@@ -12,7 +12,8 @@ maintainers = [
 ]
 
 keywords = [
-    "template"
+    "youtube",
+    "download",
 ]
 
 classifiers = [
@@ -33,13 +34,13 @@ classifiers = [
 ]
 
 [tool.poetry.urls]
-repository = "https://github.com/ilkersigirci/python-template"
+repository = "https://github.com/ilkersigirci/youtube-downloader"
 
 [tool.poetry.build]
 generate-setup-file = false
 
 [tool.poetry.scripts]
-placeholder = "python_template.scripts.placeholder:placeholder_script"
+placeholder = "youtube_downloader.scripts.placeholder:placeholder_script"
 
 ## poetry source add --secondary private-pypi http://private-pypi/simple/
 # [[tool.poetry.source]]
@@ -50,6 +51,7 @@ placeholder = "python_template.scripts.placeholder:placeholder_script"
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.12"
+ytdl-sub = "^2023.4.20.post2"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.1.2"
@@ -82,7 +84,7 @@ addopts = [
 #    "--strict-markers",
 #    "--doctest-modules",
     # NOTE: cov is not working with pycharm debugger. Enable it later!
-#    "--cov python_template",
+#    "--cov youtube_downloader",
 #    "--cov-report=xml",
 #    "--cov-report html",
 ]
@@ -152,7 +154,7 @@ extend-exclude = [
 [tool.ruff.per-file-ignores]
 "__init__.py" = ["E402", "F401"]
 # "path/to/file.py" = ["E402"]
-# 'python_template/__init__.py' = ['F405', 'F403']
+# 'youtube_downloader/__init__.py' = ['F405', 'F403']
 
 # [tool.ruff.flake8-quotes]
 # inline-quotes = "single"
@@ -178,7 +180,7 @@ combine-as-imports = true
 # Read more here: https://mypy.readthedocs.io/en/stable/config_file.html#using-a-pyproject-toml-file
 [tool.mypy]
 # python_version = "3.8"
-files = ["python_template"]
+files = ["youtube_downloader"]
 # exclude = ['^tests/']
 strict = true
 show_error_codes = true
@@ -186,12 +188,12 @@ show_error_codes = true
 
 # TODO: Check whether this is working
 [[tool.mypy.overrides]]
-module = "python_template.tests.*"
+module = "youtube_downloader.tests.*"
 ignore_missing_imports = true
 check_untyped_defs = true
 
 [tool.coverage.run]
-source = ['python_template']
+source = ['youtube_downloader']
 branch = true
 context = '${CONTEXT}'
 
@@ -207,7 +209,7 @@ exclude_lines = [
 
 # [tool.coverage.paths]
 # source = [
-#     'python_template/',
+#     'youtube_downloader/',
 # ]
 
 ######### Local poetry.toml example ##############
