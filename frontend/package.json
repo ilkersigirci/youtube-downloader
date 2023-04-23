@@ -29,5 +29,9 @@
 		"typescript": "^5.0.0",
 		"vite": "^4.2.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"yt-dlp": "^0.0.6",
+		"ytdl-core": "^4.11.4"
+	}
 }
