@@ -1,7 +1,6 @@
 from enum import Enum
-from typing import Any, List
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, validator
 
 from youtube_downloader.utils import (
     get_url_from_youtube_id,
@@ -13,12 +12,26 @@ from youtube_downloader.utils import (
 class VideoInfo(BaseModel):
     id: str
     title: str
-    formats: List[Any]
+    # formats: List[Any]
     thumbnail: str
     description: str
     # channel_id: str
     # channel_url: str
     ext: str
+
+
+def get_video_info_model(id: str) -> VideoInfo:
+    result_json = get_video_info(id=id)
+
+    return VideoInfo(
+        id=result_json["id"],
+        title=result_json["title"],
+        thumbnail=result_json["thumbnail"],
+        description=result_json["description"],
+        # formats=[],
+        # formats=result_json["formats"],
+        ext=result_json["ext"],
+    )
 
 
 class Category(Enum):
@@ -32,11 +45,13 @@ class Category(Enum):
 class Item(BaseModel):
     """Representation of an item in the system."""
 
-    id: str = Field(description="Unique integer that specifies this item.")
+    id: str
+    # id: str = Field(description="Unique string that specifies this item.")
+    info: VideoInfo
     category: Category = Category.UNCATEGORIZED
 
     @validator("id")
-    def name_must_contain_space(cls, v):
+    def valid_youtube_id(cls, v):
         is_valid = validate_id(id=v)
 
         if not is_valid:
@@ -47,17 +62,3 @@ class Item(BaseModel):
     @property
     def url(self) -> str:
         return get_url_from_youtube_id(id=self.id)
-
-    @property
-    def info(self) -> VideoInfo:
-        result_json = get_video_info(id=self.id)
-
-        return VideoInfo(
-            id=result_json["id"],
-            title=result_json["title"],
-            thumbnail=result_json["thumbnail"],
-            description=result_json["description"],
-            formats=[],
-            # formats=result_json["formats"],
-            ext=result_json["ext"],
-        )

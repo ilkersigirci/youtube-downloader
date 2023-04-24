@@ -1,6 +1,9 @@
+import logging
 from typing import Any
 
 import yt_dlp
+
+logger = logging.getLogger(__name__)
 
 
 def extract_youtube_id_from_url(url: str) -> str:
@@ -11,6 +14,7 @@ def get_url_from_youtube_id(id: str) -> str:
     return f"https://www.youtube.com/watch?v={id}"
 
 
+# TODO: Implement this function
 def validate_id(id: str) -> bool:
     return True
 
@@ -26,7 +30,7 @@ def get_video_info(id: str) -> Any:
         try:
             info = ydl.extract_info(url, download=False)
         except yt_dlp.utils.YoutubeDLError as exc:
-            print(exc)  # noqa: T201
+            logger.error(exc)
 
             return None
 

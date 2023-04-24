@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from youtube_downloader.models import Item
+from youtube_downloader.models import Item, get_video_info_model
 
 # You can give your API a title and add additional metadata such as a description, version number, etc.
 # The description also supports markdown formatting.
@@ -21,11 +21,13 @@ app.add_middleware(
 )
 
 
-items = {
-    0: Item(id="SUelbSa-OkA"),
-    1: Item(id="SORiTsvnU28"),
-    2: Item(id="fZUluo9vUNw"),
-}
+# items = {
+#     0: Item(id="SUelbSa-OkA", info=get_video_info_model(id="SUelbSa-OkA")),
+#     1: Item(id="SORiTsvnU28", info=get_video_info_model(id="SORiTsvnU28")),
+#     2: Item(id="fZUluo9vUNw", info=get_video_info_model(id="fZUluo9vUNw")),
+# }
+
+items = {}
 
 
 @app.get("/")
@@ -33,12 +35,22 @@ def index():
     return "Dummy api index"
 
 
-@app.get("/items/{item_id}")
-def query_item_by_id(item_id: int) -> Item:
-    if item_id not in items:
-        HTTPException(status_code=404, detail=f"Item with {item_id=} does not exist.")
+# @app.get("/items/{item_id}")
+# def query_item_by_id(item_id: int) -> Item:
+#     if item_id not in items:
+#         HTTPException(status_code=404, detail=f"Item with {item_id=} does not exist.")
 
-    return items[item_id]
+#     return items[item_id]
+
+
+@app.get("/items/{item_id}")
+def query_item_by_id(item_id: str) -> Item:
+    # if item_id not in items:
+    #     HTTPException(status_code=404, detail=f"Item with {item_id=} does not exist.")
+
+    # return items[item_id]
+
+    return Item(id=item_id, info=get_video_info_model(id=item_id))
 
 
 @app.post("/items")
