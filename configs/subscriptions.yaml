@@ -3,6 +3,22 @@ rick_a:
   download:
     url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
+rick_a_music_video_playlist:
+  preset: "yt_playlist"
+  download:
+    url: "https://www.youtube.com/playlist?list=PLlaN88a7y2_plecYoJxvRFTLHVbIVAOoc"
+  overrides:
+    tv_show_name: "Music Videos"
+
+rick_a_channel:
+  preset:
+    - "yt_channel"
+    - "recent_videos"
+  download:
+    url: "https://www.youtube.com/channel/UCuAXFkgsw1L7xaCfnd5JJOw"
+  overrides:
+    tv_show_name: "Rick Astley"
+
 # metadata:
 #   preset: "yt_video"
 #   youtube:
